@@ -1,14 +1,10 @@
 import { Text, View } from "react-native";
+import styles from "../styles/vakanties";
 
 export default function Index() {
   return (
     <View
-      style={{
-        flex: 1,
-        backgroundColor: "#d9d9d9",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
+      style={styles.container}
     >
       <Text>Vakanties</Text>
     </View>
