@@ -10,7 +10,7 @@ export default function Index() {
 
       <View style={styles.imageWrapper}>
         <Image
-          source={{ uri: "https://via.placeholder.com/150" }}
+          source={ require('../assets/images/portrait.png') }
           style={styles.image}
         />
       </View>
