@@ -1,10 +1,10 @@
 import { StyleSheet } from "react-native";
 
-const styles = StyleSheet.create({
+export const getStyles = (isLandscape: boolean) => StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#d9d9d9",
-    paddingTop: 60,
+    paddingTop: isLandscape ? 20 : 60,
     paddingBottom: 30,
   },
   top: {
@@ -19,8 +19,13 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     justifyContent: "center",
   },
+  dropdownWrapper: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   dropdown: {
-    width: '100%',
+    width: isLandscape ? '50%' : '100%',
     paddingHorizontal: 20,
     paddingVertical: 10,
     borderRadius: 10,
@@ -55,5 +60,3 @@ const styles = StyleSheet.create({
     marginTop: 50,
   },
 });
-
-export default styles;

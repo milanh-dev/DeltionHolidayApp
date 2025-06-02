@@ -1,16 +1,18 @@
 import { StyleSheet } from "react-native";
 
-const styles = StyleSheet.create({
+export const getStyles = (isLandscape : boolean) => StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#d9d9d9",
   },
   content: {
     flex: 1,
+    flexDirection: isLandscape ? 'row' : 'column',
     justifyContent: 'center',
     alignItems: 'center',
   },
   bottom: {
+    display: isLandscape ? 'none' : 'flex',
     padding: 10,
     alignItems: 'center',
   },
@@ -38,10 +40,11 @@ const styles = StyleSheet.create({
   daysTextWrapper: {
     alignItems: 'center',
     marginBottom: 20,
+    marginRight: isLandscape ? 20 : 0,
   },
   daysRow: {
-    flexDirection: 'row',
-    alignItems: 'flex-end',
+    flexDirection: isLandscape ? 'column' : 'row',
+    alignItems: isLandscape ? 'center' : 'flex-end',
   },
   bigNumber: {
     fontSize: 100,
@@ -58,5 +61,3 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
-
-export default styles;

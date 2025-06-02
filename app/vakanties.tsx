@@ -1,13 +1,17 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFocusEffect } from "expo-router";
 import { useCallback, useState } from "react";
-import { Text, View } from "react-native";
+import { Text, View, useWindowDimensions } from "react-native";
 import { getRegionHolidays } from "../lib/getRegionHolidays";
-import styles from "../styles/vakanties";
+import { getStyles } from "../styles/vakanties";
 
 export default function Index() {
   const [holidays, setHolidays] = useState<any[]>([]);
   const [region, setRegion] = useState<string | null>(null);
+
+  const { width, height } = useWindowDimensions();
+  const isLandscape = width > height;
+  const styles = getStyles(isLandscape);
 
   function formatDate(dateString: string): string {
     const date = new Date(dateString);
@@ -46,8 +50,10 @@ export default function Index() {
       <View style={styles.holidayWrapper}>
         {holidays.map((holiday, key) => (
           <View key={key} style={styles.holidayItem}>
-            <Text style={styles.holidayItemTitle}>{holiday.type}</Text>
-            <View style={{ flexDirection: 'row' }}>
+            <View style={{ alignItems: 'center', marginBottom: 10 }}>
+              <Text style={styles.holidayItemTitle}>{holiday.type}</Text>
+            </View>
+            <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
               <Text style={styles.holidayText}>{formatDate(holiday.start.toString())}</Text>
               <Text style={styles.holidayText}> - </Text>
               <Text style={styles.holidayText}>{formatDate(holiday.end.toString())}</Text>

@@ -1,15 +1,19 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFocusEffect } from '@react-navigation/native';
 import { useCallback, useState } from "react";
-import { Image, Text, View } from "react-native";
+import { Image, Text, View, useWindowDimensions } from "react-native";
 import { getNearestHoliday } from '../lib/getNearestHoliday';
-import styles from '../styles/index';
+import { getStyles } from '../styles/index';
 
 export default function Index() {
   const [region, setRegion] = useState<string | null>(null);
   const [holidayName, setHolidayName] = useState<string | null>(null);
   const [daysRemaining, setDaysRemaining] = useState<number | null>(null);
   const [holidayImage, setHolidayImage] = useState<string | null>(null);
+
+  const { width, height } = useWindowDimensions();
+  const isLandscape = width > height;
+  const styles = getStyles(isLandscape);
 
   const holidayImages: { [key: string]: any } = {
     zomervakantie: require('../assets/images/holidays/zomervakantie.jpg'),

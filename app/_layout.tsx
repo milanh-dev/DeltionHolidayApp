@@ -1,8 +1,12 @@
 import { Ionicons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
 import React from "react";
+import { useWindowDimensions } from 'react-native';
 
 export default function RootLayout() {
+  const { width, height } = useWindowDimensions();
+  const isLandscape = width > height;
+
   return (
     <Tabs 
       screenOptions={{ 
@@ -11,10 +15,11 @@ export default function RootLayout() {
         tabBarActiveTintColor: '#000',
         tabBarInactiveTintColor: '#a7a7a7',
         tabBarStyle: {
-          paddingBottom: 85,
-          paddingTop: 10,
+          paddingBottom: isLandscape ? 0 : 85,
+          paddingTop: isLandscape ? 0 : 10,
           borderTopWidth: 1,
           borderTopColor: '#d9d9d9',
+          height: isLandscape ? 50 : 100,
         },
       }}
     >

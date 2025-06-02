@@ -1,7 +1,11 @@
-import { Image, Text, View } from "react-native";
-import styles from "../styles/over";
+import { Image, Text, View, useWindowDimensions } from "react-native";
+import { getStyles } from "../styles/over";
 
 export default function Index() {
+  const { width, height } = useWindowDimensions();
+  const isLandscape = width > height;
+  const styles = getStyles(isLandscape);
+
   return (
     <View style={styles.container}>
       <View style={styles.top}>

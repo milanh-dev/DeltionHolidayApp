@@ -1,10 +1,10 @@
 import { StyleSheet } from 'react-native';
 
-const styles = StyleSheet.create({
+export const getStyles = (isLandscape: boolean) => StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#d9d9d9",
-    paddingTop: 60,
+    paddingTop: isLandscape ? 20 : 60,
     paddingBottom: 30,
   },
   top: {
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#bcbcbc",
   },
   bottom: {
-    flex: 1,
+    flex: isLandscape ? 0 : 1,
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "row",
@@ -39,5 +39,3 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
 });
-
-export default styles;
