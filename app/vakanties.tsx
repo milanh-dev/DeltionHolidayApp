@@ -50,10 +50,10 @@ export default function Index() {
       <View style={styles.holidayWrapper}>
         {holidays.map((holiday, key) => (
           <View key={key} style={styles.holidayItem}>
-            <View style={{ alignItems: 'center', marginBottom: 10 }}>
+            <View style={styles.holidayItemTitleWrapper}>
               <Text style={styles.holidayItemTitle}>{holiday.type}</Text>
             </View>
-            <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
+            <View style={styles.holidayItemTextWrapper}>
               <Text style={styles.holidayText}>{formatDate(holiday.start.toString())}</Text>
               <Text style={styles.holidayText}> - </Text>
               <Text style={styles.holidayText}>{formatDate(holiday.end.toString())}</Text>

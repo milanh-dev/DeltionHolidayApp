@@ -28,15 +28,22 @@ export const getStyles = (isLandscape: boolean) => StyleSheet.create({
     margin: 10,
     marginLeft: isLandscape ? 5 : 20,
     marginRight: isLandscape ? 5 : 20,
-    // marginRight: 20,
     padding: isLandscape ? 0 : 10,
     borderRadius: 10,
     borderWidth: 2,
     borderColor: "#999",
   },
+  holidayItemTitleWrapper: {
+    alignItems: isLandscape ? "center" : "flex-start",
+    marginBottom: 10,
+  },
   holidayItemTitle: {
     fontSize: isLandscape ? 16 : 24,
     fontWeight: "bold",
+  },
+  holidayItemTextWrapper: {
+    justifyContent: isLandscape ? 'center' : 'flex-start',
+    flexDirection: 'row', 
   },
   holidayText: {
     fontSize: isLandscape ? 16 : 20,
