@@ -23,8 +23,9 @@ export default function Index() {
     ];
 
     const month = dutchShortMonths[date.getMonth()];
+    const year = date.getFullYear();
 
-    return `${day} ${month}`;
+    return `${day} ${month} ${year}`;
   }
 
   useFocusEffect(

@@ -10,7 +10,8 @@ export default function Index() {
   const [deviceRegion, setDeviceRegion] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
-  const [selectedOption, setSelectedOption] = useState<string>('Gebruik locatie');
+  const [selectedRegionOption, setSelectedRegionOption] = useState<string>('Gebruik locatie');
+  const [selectedSchoolYearOption, setSelectedSchoolYearOption] = useState<string>('2024-2025');
 
   const { width, height } = useWindowDimensions();
   const isLandscape = width > height;
@@ -22,7 +23,7 @@ export default function Index() {
         const regioName = await getRegion();
         setDeviceRegion(regioName);
 
-        if (selectedOption === 'Gebruik locatie') {
+        if (selectedRegionOption === 'Gebruik locatie') {
           setRegion(regioName);
         }
       } catch (err: any) {
@@ -35,8 +36,8 @@ export default function Index() {
     fetchRegion();
   }, []);
 
-  const handleSelectionChange = async (value: string) => {
-    setSelectedOption(value);
+  const handleRegionSelectionChange = async (value: string) => {
+    setSelectedRegionOption(value);
 
     if (value === 'Gebruik locatie') {
       if (deviceRegion) {
@@ -51,6 +52,12 @@ export default function Index() {
     }
   }
 
+  const handleSchoolYearSelectionChange = async (value: string) => {
+    setSelectedSchoolYearOption(value);
+
+    await AsyncStorage.setItem('selectedSchoolYear', value);
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.top}>
@@ -62,8 +69,8 @@ export default function Index() {
         <Text style={styles.regio}>Regio</Text>
           <View style={styles.pickerWrapper}>
             <Picker
-              selectedValue={selectedOption}
-              onValueChange={handleSelectionChange}
+              selectedValue={selectedRegionOption}
+              onValueChange={handleRegionSelectionChange}
               style={styles.picker}
             >
               <Picker.Item label="Gebruik locatie" value="Gebruik locatie" />
@@ -73,6 +80,27 @@ export default function Index() {
             </Picker>
           </View>
         {loading && <ActivityIndicator size="small" style={{ marginTop: 10 }} />}
+        {error && <Text style={styles.errorText}>Fout: {error}</Text>}
+        </View>
+      </View>
+
+      <View style={styles.dropdownWrapper}>
+        <View style={[styles.centered, styles.dropdown]}>
+        <Text style={styles.regio}>Schooljaar</Text>
+          <View style={styles.pickerWrapper}>
+            <Picker
+              selectedValue={selectedSchoolYearOption}
+              onValueChange={handleSchoolYearSelectionChange}
+              style={styles.picker}
+            >
+              <Picker.Item label="2024-2025" value="2024-2025" />
+              <Picker.Item label="2025-2026" value="2025-2026" />
+              <Picker.Item label="2026-2027" value="2026-2027" />
+              <Picker.Item label="2027-2028" value="2027-2028" />
+              <Picker.Item label="2028-2029" value="2028-2029" />
+              <Picker.Item label="2029-2030" value="2029-2030" />
+            </Picker>
+          </View>
         {error && <Text style={styles.errorText}>Fout: {error}</Text>}
         </View>
       </View>

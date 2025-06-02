@@ -31,7 +31,7 @@ export default function Index() {
         const storedRegion = await AsyncStorage.getItem('userRegion');
         setRegion(storedRegion);
 
-        const nearestHoliday = getNearestHoliday(storedRegion);
+        const nearestHoliday = await getNearestHoliday(storedRegion);
         if (nearestHoliday !== null) {
           setHolidayName(nearestHoliday.type);
           setDaysRemaining(nearestHoliday.daysRemaining);
