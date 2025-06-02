@@ -28,7 +28,6 @@ export default function Index() {
         setRegion(storedRegion);
 
         const nearestHoliday = getNearestHoliday(storedRegion);
-        console.warn(nearestHoliday?.imageKey);
         if (nearestHoliday !== null) {
           setHolidayName(nearestHoliday.type);
           setDaysRemaining(nearestHoliday.daysRemaining);
