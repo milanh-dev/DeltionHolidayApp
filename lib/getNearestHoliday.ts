@@ -8,7 +8,7 @@ interface Holiday {
     imageKey: string;
 }
 
-const today = new Date(); // Zomervakantie
+const today = new Date(); // Zomervakantie 
 // const today = new Date('2024-09-01'); // Herfstvakantie
 // const today = new Date('2024-12-01'); // Kerstvakantie
 // const today = new Date('2025-01-01'); // Voorjaarsvakantie
