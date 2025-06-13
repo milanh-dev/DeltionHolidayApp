@@ -43,7 +43,8 @@ export const getStyles = (isLandscape: boolean) => StyleSheet.create({
   },
   holidayItemTextWrapper: {
     justifyContent: isLandscape ? 'center' : 'flex-start',
-    flexDirection: 'row', 
+    alignItems: isLandscape ? 'center' : 'flex-start',
+    flexDirection: isLandscape ? 'column' : 'row', 
   },
   holidayText: {
     fontSize: isLandscape ? 16 : 20,

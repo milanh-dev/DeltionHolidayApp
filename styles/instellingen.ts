@@ -9,7 +9,7 @@ export const getStyles = (isLandscape: boolean) => StyleSheet.create({
   },
   top: {
     alignItems: "center",
-    marginBottom: 20,
+    marginBottom: isLandscape ? 0 : 20,
   },
   title: {
     fontSize: 24,
@@ -29,7 +29,7 @@ export const getStyles = (isLandscape: boolean) => StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 10,
     borderRadius: 10,
-    marginBottom: 20,
+    marginBottom: isLandscape ? 0 : 20,
   },
     pickerWrapper: {
     width: '100%',
@@ -57,6 +57,6 @@ export const getStyles = (isLandscape: boolean) => StyleSheet.create({
   regio: {
     fontSize: 18,
     marginBottom: 10,
-    marginTop: 50,
+    marginTop: isLandscape ? 0 : 50,
   },
 });
